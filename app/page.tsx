@@ -11,9 +11,6 @@ import { Background } from "@/components/Background";
 import { TechMarquee } from "@/components/TechMarquee";
 import { CTA } from "@/components/CTA";
 
-// Testimonials are hidden until there are real client quotes to show.
-// To bring the section back: import { Testimonials } from "@/components/Testimonials" and add <Testimonials /> before <Contact />.
-
 export default function Home() {
   return (
     <main className="relative min-h-screen bg-[#0b1120] text-gray-300 overflow-x-hidden">
