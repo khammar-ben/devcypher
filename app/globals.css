@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+@theme {
+  --font-mono: var(--font-fira-code);
+  --font-sans: var(--font-inter);
+
+  --color-brand-sky: #60a5fa;
+  --color-brand-cyan: #22d3ee;
+  --color-brand-purple: #c084fc;
+  --color-brand-green: #4ade80;
+  --color-brand-blue: #3b82f6;
+  --color-surface-dark: #0b1120;
+  --color-surface-card: #111a30;
+  --color-surface-hover: #16203a;
+  --color-border: #243049;
+  --color-border-light: #2b3a55;
+}
+
+@layer base {
+  body {
+    @apply bg-[#0b1120] text-gray-300;
+    -webkit-font-smoothing: antialiased;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+}
+
+/* Glow utilities */
+.text-glow-blue { text-shadow: 0 0 20px rgba(96,165,250, 0.6); }
+.text-glow-cyan   { text-shadow: 0 0 20px rgba(34, 211, 238, 0.6); }
+.box-glow-blue  { box-shadow: 0 0 30px rgba(96,165,250, 0.15); }
+.box-glow-cyan    { box-shadow: 0 0 30px rgba(34, 211, 238, 0.12); }
+
+/* Fade in animation */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in { animation: fade-in 0.7s ease-out both; }
+.animate-fade-in-delay-1 { animation: fade-in 0.7s 0.15s ease-out both; }
+.animate-fade-in-delay-2 { animation: fade-in 0.7s 0.3s ease-out both; }
+.animate-fade-in-delay-3 { animation: fade-in 0.7s 0.45s ease-out both; }
+
+/* Scrollbar hidden */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Background marquee */
+@keyframes marquee-ltr {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0%); }
+}
+@keyframes marquee-rtl {
+  0%   { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-ltr { animation: marquee-ltr 80s linear infinite; will-change: transform; }
+.marquee-rtl { animation: marquee-rtl 90s linear infinite; will-change: transform; }
+
+/* Pulse/typewriter cursor */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+.cursor-blink { animation: blink 1s step-end infinite; }
+
+/* Gradient shimmer for cards */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(96,165,250,0.06) 50%, transparent 100%);
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+}
+
+/* Progress bar fill */
+@keyframes fill-bar {
+  from { width: 0%; }
+  to   { width: var(--fill-w); }
+}
+.fill-bar { animation: fill-bar 1.2s ease-out both; }
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+.animate-float { animation: float 4s ease-in-out infinite; }
+
+/* ── Ambient background ───────────────────────────── */
+.aurora { position: absolute; border-radius: 9999px; filter: blur(110px); will-change: transform; }
+.aurora-1 { width: 640px; height: 640px; background: #1d4ed8; opacity: .28; top: -260px; left: -160px; animation: drift-1 24s ease-in-out infinite alternate; }
+.aurora-2 { width: 520px; height: 520px; background: #0891b2; opacity: .16; top: 18%; right: -180px; animation: drift-2 28s ease-in-out infinite alternate; }
+.aurora-3 { width: 760px; height: 520px; background: #1e3a8a; opacity: .22; bottom: -300px; left: 25%; animation: drift-3 32s ease-in-out infinite alternate; }
+@keyframes drift-1 { to { transform: translate(180px, 120px) scale(1.15); } }
+@keyframes drift-2 { to { transform: translate(-160px, 140px) scale(.9); } }
+@keyframes drift-3 { to { transform: translate(-200px, -120px) scale(1.1); } }
+
+.bg-noise {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  opacity: .045;
+  mix-blend-mode: overlay;
+}
+
+/* ── Rotating light around a card border ──────────── */
+@property --angle { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
+.glow-border { position: relative; isolation: isolate; }
+.glow-border::before {
+  content: ""; position: absolute; inset: -1px; border-radius: inherit; padding: 1px; z-index: -1;
+  background: conic-gradient(from var(--angle), transparent 0 65%, #60a5fa 82%, #22d3ee 90%, transparent 100%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  animation: spin-border 7s linear infinite;
+}
+@keyframes spin-border { to { --angle: 360deg; } }
+
+/* ── Tools strip ──────────────────────────────────── */
+.marquee-tech { animation: marquee-rtl 40s linear infinite; }
+.marquee-mask:hover .marquee-tech { animation-play-state: paused; }
+.marquee-mask { mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
+
+/* Respect users who turn off motion in their OS */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .marquee-ltr, .marquee-rtl { animation: none; }
+}

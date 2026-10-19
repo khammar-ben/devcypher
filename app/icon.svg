@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="100 46 440 440">
+  <defs>
+    <linearGradient id="dcL" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#60a5fa"/><stop offset="1" stop-color="#1d4ed8"/></linearGradient>
+    <linearGradient id="dcR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7cc0ff"/><stop offset="1" stop-color="#2563eb"/></linearGradient>
+    <linearGradient id="dcB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#dbeafe"/></linearGradient>
+    <filter id="dcGlow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect x="100" y="46" width="440" height="440" rx="96" fill="#0f172a"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="22" filter="url(#dcGlow)">
+    <path d="M226 152 L156 262 L226 372" stroke="url(#dcL)"/>
+    <path d="M414 152 L484 262 L414 372" stroke="url(#dcR)"/>
+    <path d="M328 128 L291 243 L346 243 L290 404" stroke="url(#dcB)" stroke-width="20"/>
+  </g>
+</svg>

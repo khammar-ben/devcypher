@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 632 627">
+  <defs>
+    <linearGradient id="dcL" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#60a5fa"/><stop offset="1" stop-color="#1d4ed8"/></linearGradient>
+    <linearGradient id="dcR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7cc0ff"/><stop offset="1" stop-color="#2563eb"/></linearGradient>
+    <linearGradient id="dcB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#dbeafe"/></linearGradient>
+    <filter id="dcGlow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <linearGradient id="dcBg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f172a"/><stop offset="1" stop-color="#131a2e"/></linearGradient>
+  <rect width="632" height="627" fill="url(#dcBg)"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="22" filter="url(#dcGlow)">
+    <path d="M226 152 L156 262 L226 372" stroke="url(#dcL)"/>
+    <path d="M414 152 L484 262 L414 372" stroke="url(#dcR)"/>
+    <path d="M328 128 L291 243 L346 243 L290 404" stroke="url(#dcB)" stroke-width="20"/>
+  </g>
+  <text x="316" y="492" text-anchor="middle" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="58" font-weight="700" letter-spacing="-1"><tspan fill="#e2e8f0">dev</tspan><tspan fill="#60a5fa">cypher</tspan></text>
+  <text x="316" y="528" text-anchor="middle" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="17" letter-spacing="3.5" fill="#60a5fa">WEB &amp; AUTOMATION</text>
+</svg>
